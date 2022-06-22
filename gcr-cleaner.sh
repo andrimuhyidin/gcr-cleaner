@@ -14,7 +14,7 @@ init() {
 
 auth_gcr() {
     echo "[info] -- Authenticating to GCR"
-    echo $GCR_CRED | base64 -d > gcr-user.json
+    echo $GCR_CRED > gcr-user.json
     gcloud auth activate-service-account $SERVICE_ACCOUNT --key-file=gcr-user.json
     gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin $GCR_URL_REGION
 }
